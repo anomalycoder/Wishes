@@ -1,0 +1,336 @@
+/* --- Global Styles & Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;700&display=swap');
+
+/* --- CRITICAL: Smooth Scrolling Setup --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow: hidden; /* Prevent double scrollbars */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0c0c1d;
+  color: #fff;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Main scrollable container */
+.app-container {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y proximity; /* Smooth scroll snapping */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Custom scrollbar */
+.app-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.app-container::-webkit-scrollbar-track {
+  background: #0c0c1d;
+}
+
+.app-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff4081, #ff69b4);
+  border-radius: 10px;
+}
+
+.app-container::-webkit-scrollbar-thumb:hover {
+  background: #ff69b4;
+}
+
+/* Each full-height section */
+.page-section {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+/* Canvas positioning */
+canvas {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0;
+}
+
+/* --- Text & Headings --- */
+.main-heading {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.5rem;
+  color: #ffffff;
+  text-shadow: 0 0 30px #ff69b4, 0 0 60px #ff69b4;
+  z-index: 10;
+  position: relative;
+  animation: fadeInDown 1.2s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-down-prompt {
+  position: absolute;
+  bottom: 40px;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+  animation: bounce 2s infinite ease-in-out;
+  letter-spacing: 1px;
+}
+
+@keyframes bounce {
+  0%, 100% { 
+    transform: translateY(0); 
+    opacity: 1;
+  }
+  50% { 
+    transform: translateY(-15px); 
+    opacity: 0.7;
+  }
+}
+
+.scene-heading {
+  position: absolute;
+  top: 8%;
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  color: #ffffff;
+  text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+  user-select: none;
+  z-index: 10;
+  animation: fadeInDown 1.2s ease-out;
+}
+
+.scene-instruction {
+  position: absolute;
+  bottom: 40px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  z-index: 10;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+/* Scene 3 - Top text with white color and pink glow (matches Scene 1) */
+.final-message-top {
+  position: absolute;
+  top: 10%;
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.5rem;
+  color: #ffffff; /* White text */
+  text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff69b4, 0 0 60px #ff69b4; /* Pink glow */
+  z-index: 10;
+  animation: fadeInDown 1.2s ease-out;
+}
+
+/* --- Page 1: Hearts Background --- */
+.page1 {
+  background: linear-gradient(180deg, #1e103b 0%, #0c0c1d 100%);
+}
+
+.page1-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.heart {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  transform: rotate(-45deg);
+  background: rgba(255, 105, 180, 0.6);
+  animation: love 10s linear infinite;
+  pointer-events: none;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.heart:before {
+  top: -50%;
+  left: 0;
+}
+
+.heart:after {
+  top: 0;
+  right: -50%;
+}
+
+@keyframes love {
+  from {
+    top: 110%;
+    opacity: 0.8;
+  }
+  to {
+    top: -50%;
+    opacity: 0;
+  }
+}
+
+/* --- Page 2: Image Gallery --- */
+.page2 {
+  background: linear-gradient(180deg, #0c0c1d 0%, #1a0a2e 100%);
+  cursor: grab;
+}
+
+.page2:active {
+  cursor: grabbing;
+}
+
+/* --- Page 3: Cake Scene --- */
+.page3 {
+  background: linear-gradient(180deg, #1a0a2e 0%, #0c0c1d 100%);
+}
+
+/* Cut the Cake Button */
+.cut-cake-button {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 18px 40px;
+  background: linear-gradient(135deg, #ff4081, #ff6b9d);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 8px 25px rgba(255, 64, 129, 0.5);
+  transition: all 0.3s ease;
+  animation: pulseButton 2s infinite;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cut-cake-button:hover {
+  transform: translateX(-50%) translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(255, 64, 129, 0.7);
+}
+
+.cut-cake-button:active {
+  transform: translateX(-50%) translateY(-2px) scale(0.98);
+}
+
+@keyframes pulseButton {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(255, 64, 129, 0.5);
+  }
+  50% {
+    box-shadow: 0 8px 35px rgba(255, 64, 129, 0.8);
+  }
+}
+
+/* Celebration text with white color and pink glow */
+.celebration-text {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  color: #ffffff; /* White text */
+  text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4; /* Pink glow */
+  font-weight: bold;
+  z-index: 10;
+  animation: fadeInScale 0.8s ease-out;
+  text-align: center;
+  max-width: 90%;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .main-heading {
+    font-size: 3rem;
+  }
+  
+  .scene-heading {
+    font-size: 2.5rem;
+  }
+  
+  .final-message-top {
+    font-size: 3rem;
+  }
+  
+  .cut-cake-button {
+    font-size: 1.1rem;
+    padding: 15px 30px;
+  }
+  
+  .celebration-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-heading {
+    font-size: 2.5rem;
+  }
+  
+  .scene-heading {
+    font-size: 2rem;
+  }
+  
+  .final-message-top {
+    font-size: 2.5rem;
+  }
+  
+  .cut-cake-button {
+    font-size: 1rem;
+    padding: 12px 25px;
+  }
+}
