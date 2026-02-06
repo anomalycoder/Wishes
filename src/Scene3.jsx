@@ -6,21 +6,21 @@ import ConfettiExplosion from 'react-confetti-explosion';
 function CakeModel(props) {
   const { scene } = useGLTF('/cake.glb');
   const cakeRef = useRef();
-  
+
   // Continuous 360° rotation
   useFrame((state, delta) => {
     if (cakeRef.current) {
       cakeRef.current.rotation.y += delta * 0.5; // Smooth rotation speed
     }
   });
-  
+
   return <primitive ref={cakeRef} object={scene} {...props} />;
 }
 
 // Custom Fireworks component using Sparkles
 function Fireworks({ isActive }) {
   if (!isActive) return null;
-  
+
   return (
     <>
       {/* Multiple sparkle bursts for fireworks effect */}
@@ -80,7 +80,7 @@ const Scene3 = () => {
   const handleCutCake = () => {
     setIsCakeCut(true);
     setShowFireworks(true);
-    
+
     // Stop fireworks after 5 seconds
     setTimeout(() => {
       setShowFireworks(false);
@@ -91,21 +91,21 @@ const Scene3 = () => {
     <section className="page-section page3">
       {/* Text at the top */}
       <h2 className="final-message-top">
-        {isCakeCut ? '🎉 Happy Birthday! 🎉' : 'Make a wish!'}
+        {isCakeCut ? '🎉 Happy 18th Birthday! 🎉' : 'Make a wish!'}
       </h2>
-      
+
       {/* 3D Canvas */}
-      <Canvas camera={{ position: [-120,100,-200], fov: 75 }}>
+      <Canvas camera={{ position: [-120, 100, -200], fov: 75 }}>
         {/* Enhanced lighting */}
         <ambientLight intensity={1.8} />
         <pointLight position={[0, 2, 0]} intensity={40} color="#ff9a21" />
         <directionalLight position={[5, 5, 5]} intensity={2.5} />
         <directionalLight position={[-5, 5, -5]} intensity={1.5} />
-        
+
         <Suspense fallback={null}>
           {/* Rotating Cake */}
           <CakeModel scale={2.5} position={[0, -120, 0]} />
-          
+
           {/* Background sparkles (always on) */}
           <Sparkles
             count={100}
@@ -114,19 +114,19 @@ const Scene3 = () => {
             speed={0.3}
             color="#ff4081"
           />
-          
+
           {/* Fireworks (when cake is cut) */}
           <Fireworks isActive={showFireworks} />
         </Suspense>
-        
+
         {/* OrbitControls allows manual rotation if desired */}
-        <OrbitControls 
+        <OrbitControls
           enableZoom={false}
           enablePan={false}
           autoRotate={false} // Manual rotation is handled in CakeModel
         />
       </Canvas>
-      
+
       {/* Confetti explosion overlay */}
       {isCakeCut && (
         <div style={{ position: 'fixed', top: '50%', left: '50%', zIndex: 100 }}>
@@ -139,14 +139,14 @@ const Scene3 = () => {
           />
         </div>
       )}
-      
+
       {/* Cut the Cake Button */}
       {!isCakeCut && (
         <button className="cut-cake-button" onClick={handleCutCake}>
           🎂 Cut the Cake! 🎂
         </button>
       )}
-      
+
       {/* Success message after cutting */}
       {isCakeCut && (
         <p className="celebration-text">

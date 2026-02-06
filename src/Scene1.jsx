@@ -18,7 +18,7 @@ const Scene1 = () => {
   return (
     <section className="page-section page1">
       <div className="page1-background"></div>
-      <h1 className="main-heading">Happy Birthday, Shree Saini!</h1>
+      <h1 className="main-heading">Happy Birthday, Aarohi!</h1>
       <p className="scroll-down-prompt">Scroll down...</p>
     </section>
   );

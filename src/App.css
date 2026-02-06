@@ -10,7 +10,8 @@
 
 html {
   scroll-behavior: smooth;
-  overflow: hidden; /* Prevent double scrollbars */
+  overflow: hidden;
+  /* Prevent double scrollbars */
 }
 
 body {
@@ -34,9 +35,11 @@ body {
   height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden;
-  scroll-snap-type: y proximity; /* Smooth scroll snapping */
+  scroll-snap-type: y proximity;
+  /* Smooth scroll snapping */
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Smooth scrolling on iOS */
 }
 
 /* Custom scrollbar */
@@ -96,6 +99,7 @@ canvas {
     opacity: 0;
     transform: translateY(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -113,12 +117,15 @@ canvas {
 }
 
 @keyframes bounce {
-  0%, 100% { 
-    transform: translateY(0); 
+
+  0%,
+  100% {
+    transform: translateY(0);
     opacity: 1;
   }
-  50% { 
-    transform: translateY(-15px); 
+
+  50% {
+    transform: translateY(-15px);
     opacity: 0.7;
   }
 }
@@ -151,8 +158,10 @@ canvas {
   top: 10%;
   font-family: 'Great Vibes', cursive;
   font-size: 4.5rem;
-  color: #ffffff; /* White text */
-  text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff69b4, 0 0 60px #ff69b4; /* Pink glow */
+  color: #ffffff;
+  /* White text */
+  text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff69b4, 0 0 60px #ff69b4;
+  /* Pink glow */
   z-index: 10;
   animation: fadeInDown 1.2s ease-out;
 }
@@ -205,6 +214,7 @@ canvas {
     top: 110%;
     opacity: 0.8;
   }
+
   to {
     top: -50%;
     opacity: 0;
@@ -257,9 +267,12 @@ canvas {
 }
 
 @keyframes pulseButton {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 8px 25px rgba(255, 64, 129, 0.5);
   }
+
   50% {
     box-shadow: 0 8px 35px rgba(255, 64, 129, 0.8);
   }
@@ -272,8 +285,10 @@ canvas {
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.5rem;
-  color: #ffffff; /* White text */
-  text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4; /* Pink glow */
+  color: #ffffff;
+  /* White text */
+  text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4;
+  /* Pink glow */
   font-weight: bold;
   z-index: 10;
   animation: fadeInScale 0.8s ease-out;
@@ -286,6 +301,7 @@ canvas {
     opacity: 0;
     transform: translateX(-50%) scale(0.5);
   }
+
   to {
     opacity: 1;
     transform: translateX(-50%) scale(1);
@@ -297,20 +313,20 @@ canvas {
   .main-heading {
     font-size: 3rem;
   }
-  
+
   .scene-heading {
     font-size: 2.5rem;
   }
-  
+
   .final-message-top {
     font-size: 3rem;
   }
-  
+
   .cut-cake-button {
     font-size: 1.1rem;
     padding: 15px 30px;
   }
-  
+
   .celebration-text {
     font-size: 1.2rem;
   }
@@ -320,17 +336,267 @@ canvas {
   .main-heading {
     font-size: 2.5rem;
   }
-  
+
   .scene-heading {
     font-size: 2rem;
   }
-  
+
   .final-message-top {
     font-size: 2.5rem;
   }
-  
-  .cut-cake-button {
-    font-size: 1rem;
-    padding: 12px 25px;
+}
+
+
+/* --- Page 4: Apology Scene --- */
+.page4 {
+  background: radial-gradient(circle at center, #1a237e 0%, #000033 100%);
+  /* Deep Dark Blue */
+  position: relative;
+}
+
+/* Enhanced Girly Aesthetics - Global Glows */
+.main-heading,
+.scene-heading,
+.final-message-top {
+  text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 40px #ff1493;
+  /* Stronger Pink Glow */
+}
+
+/* --- Page 1: Hearts Background --- */
+.page1 {
+  background: linear-gradient(180deg, #1e103b 0%, #0c0c1d 100%);
+}
+
+.page1-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.heart {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  transform: rotate(-45deg);
+  background: rgba(255, 105, 180, 0.6);
+  animation: love 10s linear infinite;
+  pointer-events: none;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.heart:before {
+  top: -50%;
+  left: 0;
+}
+
+.heart:after {
+  top: 0;
+  right: -50%;
+}
+
+@keyframes love {
+  from {
+    top: 110%;
+    opacity: 0.8;
   }
+
+  to {
+    top: -50%;
+    opacity: 0;
+  }
+}
+
+/* --- Page 2: Image Gallery --- */
+.page2 {
+  background: linear-gradient(180deg, #0c0c1d 0%, #1a0a2e 100%);
+  cursor: grab;
+}
+
+.page2:active {
+  cursor: grabbing;
+}
+
+/* --- Page 3: Cake Scene --- */
+.page3 {
+  background: linear-gradient(180deg, #1a0a2e 0%, #0c0c1d 100%);
+}
+
+/* Cut the Cake Button */
+.cut-cake-button {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 18px 40px;
+  background: linear-gradient(135deg, #ff4081, #ff6b9d);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 8px 25px rgba(255, 64, 129, 0.5);
+  transition: all 0.3s ease;
+  animation: pulseButton 2s infinite;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cut-cake-button:hover {
+  transform: translateX(-50%) translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(255, 64, 129, 0.7);
+}
+
+.cut-cake-button:active {
+  transform: translateX(-50%) translateY(-2px) scale(0.98);
+}
+
+@keyframes pulseButton {
+
+  0%,
+  100% {
+    box-shadow: 0 8px 25px rgba(255, 64, 129, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 8px 35px rgba(255, 64, 129, 0.8);
+  }
+}
+
+/* Celebration text with white color and pink glow */
+.celebration-text {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  color: #ffffff;
+  /* White text */
+  text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4;
+  /* Pink glow */
+  font-weight: bold;
+  z-index: 10;
+  animation: fadeInScale 0.8s ease-out;
+  text-align: center;
+  max-width: 90%;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .main-heading {
+    font-size: 3rem;
+  }
+
+  .scene-heading {
+    font-size: 2.5rem;
+  }
+
+  .final-message-top {
+    font-size: 3rem;
+  }
+
+  .cut-cake-button {
+    font-size: 1.1rem;
+    padding: 15px 30px;
+  }
+
+  .celebration-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-heading {
+    font-size: 2.5rem;
+  }
+
+  .scene-heading {
+    font-size: 2rem;
+  }
+
+  .final-message-top {
+    font-size: 2.5rem;
+  }
+}
+
+
+/* --- Page 4: Apology Scene --- */
+.page4 {
+  background: radial-gradient(circle at center, #1a237e 0%, #000033 100%);
+  /* Deep Dark Blue */
+  position: relative;
+}
+
+/* Enhanced Girly Aesthetics - Global Glows */
+.main-heading,
+.scene-heading,
+.final-message-top {
+  text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 40px #ff1493;
+  /* Stronger Pink Glow */
+}
+
+/* Scrollbar refinement */
+.app-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #5d3fd3, #ff69b4);
+  /* Blue to Pink gradient */
+}
+
+/* --- Scene 5: Magical Deep Space --- */
+.page5 {
+  /* Deep elegant dark blue for her favorite color theme */
+  background: radial-gradient(circle at center, #0a0a2a 0%, #000000 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Scene 6: Gift Box --- */
+.page6 {
+  background: radial-gradient(circle at center, #2e003e 0%, #000000 100%);
+  position: relative;
+}
+
+/* --- Scene 7: Vibe Check --- */
+.page7 {
+  background: #000000;
+  position: relative;
+}
+
+/* --- Scene 8: Lanterns --- */
+.page8 {
+  background: linear-gradient(to bottom, #000022 0%, #1a0a2e 100%);
+  position: relative;
+}
+
+/* Enhanced Typography for New Sections */
+.scene-heading {
+  text-shadow: 0 0 15px #ff1493, 0 0 30px #ff69b4;
+  transition: all 0.5s ease-in-out;
+}
+
+.scene-heading:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 25px #ff1493, 0 0 50px #ff69b4;
 }
