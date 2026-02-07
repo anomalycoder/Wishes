@@ -11,18 +11,18 @@ import SceneFinale from './SceneFinale';
 import './App.css';
 
 // --- Loading Screen Component ---
-function LoadingScreen({ onStarted }) {
+function LoadingScreen({ started, onStarted }) {
   const { progress } = useProgress();
-  const [complete, setComplete] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (progress >= 100) setComplete(true);
+    if (progress >= 100) setLoaded(true);
   }, [progress]);
 
   return (
-    <div className={`loading-overlay ${complete ? 'loaded' : ''}`}>
+    <div className={`loading-overlay`}>
       <div className="loader-content">
-        {!complete ? (
+        {!loaded ? (
           <>
             <h1 className="loader-title">Gathering Stardust... ✨</h1>
             <div className="progress-bar-container">
@@ -54,10 +54,10 @@ function LoadingScreen({ onStarted }) {
           display: flex;
           justify-content: center;
           align-items: center;
-          transition: opacity 1s ease-out, visibility 1s;
-        }
-        .loading-overlay.loaded .loader-content {
-          opacity: 1; /* Keep content visible until we fade out the overlay manually if needed, or simply render the button */
+          transition: opacity 1s ease-in-out, visibility 1s;
+          pointer-events: ${started ? 'none' : 'auto'};
+          opacity: ${started ? 0 : 1};
+          visibility: ${started ? 'hidden' : 'visible'};
         }
         .loader-content {
           text-align: center;
@@ -146,7 +146,7 @@ function App() {
 
   return (
     <>
-      {!started && <LoadingScreen onStarted={() => setStarted(true)} />}
+      <LoadingScreen started={started} onStarted={() => setStarted(true)} />
 
       {/* 
         We render the App content behind the loader so resources start fetching immediately 
