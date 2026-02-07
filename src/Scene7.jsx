@@ -107,9 +107,10 @@ const Scene7Content = ({ setHit, hit }) => {
 
             <StadiumScreen />
 
+            {/* SIXER Text Group - Always mounted, heavily optimized */}
             <group position={[-5, 2, -2]} visible={hit}>
                 <Text fontSize={2.5} color="#D1AB3E" anchorX="center" anchorY="middle">SIXER!</Text>
-                {hit && <Sparkles count={100} scale={15} size={8} speed={1} />}
+                <Sparkles count={hit ? 100 : 0} scale={15} size={8} speed={1} />
             </group>
 
             {/* Optimized Floor - Replaced heavy Reflector with Standard Material to prevent crashes */}
