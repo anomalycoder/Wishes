@@ -116,12 +116,10 @@ const Scene7Content = ({ setHit, hit }) => {
                 />
             </mesh>
 
-            {hit && (
-                <group position={[-5, 2, -2]}>
-                    <Text fontSize={2.5} color="#D1AB3E" outlineWidth={0.05} outlineColor="#fff">SIXER! 🚀</Text>
-                    <Sparkles count={200} scale={15} size={8} speed={1} />
-                </group>
-            )}
+            <group position={[-5, 2, -2]} visible={hit}>
+                <Text fontSize={2.5} color="#D1AB3E" outlineWidth={0.05} outlineColor="#fff">SIXER!</Text>
+                {hit && <Sparkles count={200} scale={15} size={8} speed={1} />}
+            </group>
         </>
     );
 };
