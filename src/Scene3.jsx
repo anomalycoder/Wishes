@@ -6,7 +6,7 @@ import gsap from 'gsap';
 
 // --- Improved Cake Model with Rotation Logic ---
 function CakeModel({ cakeRef, isAutoRotate }) {
-  const { scene } = useGLTF('/cake.glb');
+  const { scene } = useGLTF('./cake.glb'); // Relative path
 
   // Auto-rotation continues unless manually controlled
   useFrame((state, delta) => {
@@ -160,8 +160,8 @@ const Scene3 = () => {
             <CakeModel cakeRef={cakeRef} isAutoRotate={isAutoRotate} />
           </Float>
 
-          {/* Premium ground contact shadows */}
-          <ContactShadows resolution={1024} scale={600} blur={1.5} opacity={0.5} far={300} color="#ff69b4" position={[0, -122, 0]} />
+          {/* Premium ground contact shadows - Optimized for performance */}
+          <ContactShadows resolution={512} scale={100} blur={2} opacity={0.4} far={20} color="#ff69b4" position={[0, -122, 0]} frames={1} />
 
           {/* Magical background sparkles */}
           <Sparkles count={250} scale={400} size={6} speed={0.8} color="#ff69b4" opacity={0.7} />
