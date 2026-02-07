@@ -6,7 +6,7 @@ import gsap from 'gsap';
 
 // --- Improved Cake Model with Rotation Logic ---
 function CakeModel({ cakeRef, isAutoRotate }) {
-  const { scene } = useGLTF('./cake.glb'); // Relative path
+  const { scene } = useGLTF('/cake.glb'); // Absolute path from public root
 
   // Auto-rotation continues unless manually controlled
   useFrame((state, delta) => {
