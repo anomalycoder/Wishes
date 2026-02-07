@@ -1,96 +1,75 @@
-import React, { useRef, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Text, Float, Stars, Sparkles } from '@react-three/drei';
-import * as THREE from 'three';
-
-function ApologyText() {
-    return (
-        <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
-            <Text
-                color="#aeb8fe" // Light blue/lavender to stand out against dark blue
-                fontSize={1}
-                maxWidth={200}
-                lineHeight={1}
-                letterSpacing={0.02}
-                textAlign="center"
-                font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-                anchorX="center"
-                anchorY="middle"
-                position={[0, 0.5, 0]}
-            >
-                I'm Sorry I'm Late...
-            </Text>
-            <Text
-                color="#ffffff"
-                fontSize={0.4}
-                maxWidth={8}
-                lineHeight={1.2}
-                textAlign="center"
-                font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-                anchorX="center"
-                anchorY="top"
-                position={[0, -0.5, 0]}
-            >
-                Belated Happy 18th Birthday, Aarohi!
-                {"\n"}
-                Sending you all the love and best wishes.
-            </Text>
-        </Float>
-    );
-}
-
-function FloatingHeart({ position, color, scale }) {
-    const mesh = useRef();
-
-    useFrame((state) => {
-        const t = state.clock.getElapsedTime();
-        mesh.current.position.y += Math.sin(t + position[0]) * 0.002;
-        mesh.current.rotation.y += 0.01;
-    });
-
-    const shape = new THREE.Shape();
-    const x = 0, y = 0;
-    shape.moveTo(x + 0.5, y + 0.5);
-    shape.bezierCurveTo(x + 0.5, y + 0.5, x + 0.4, y, x, y);
-    shape.bezierCurveTo(x - 0.6, y, x - 0.6, y + 0.7, x - 0.6, y + 0.7);
-    shape.bezierCurveTo(x - 0.6, y + 1.1, x - 0.3, y + 1.54, x + 0.5, y + 1.9);
-    shape.bezierCurveTo(x + 1.3, y + 1.54, x + 1.6, y + 1.1, x + 1.6, y + 0.7);
-    shape.bezierCurveTo(x + 1.6, y + 0.7, x + 1.6, y, x + 1.0, y);
-    shape.bezierCurveTo(x + 0.7, y, x + 0.5, y + 0.5, x + 0.5, y + 0.5);
-
-    const geometry = new THREE.ShapeGeometry(shape);
-
-    return (
-        <mesh ref={mesh} position={position} scale={scale} rotation={[0, 0, Math.PI]}>
-            <primitive object={geometry} />
-            <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.5} toneMapped={false} side={THREE.DoubleSide} />
-        </mesh>
-    );
-}
+import React from 'react';
 
 const Scene4 = () => {
-    return (
-        <section className="page-section page4">
-            <Canvas camera={{ position: [0, 0, 6], fov: 50 }}>
-                <ambientLight intensity={0.5} />
-                <pointLight position={[10, 10, 10]} />
+  return (
+    <section style={{
+      padding: '60px 20px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      background: 'transparent', // Blends with the background of the app
+      position: 'relative'
+    }}>
+      <div style={{
+        background: 'rgba(255, 255, 255, 0.03)',
+        backdropFilter: 'blur(20px)',
+        borderRadius: '24px',
+        padding: '30px',
+        width: '100%',
+        maxWidth: '500px',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        textAlign: 'center',
+        boxShadow: '0 15px 35px rgba(0,0,0,0.2)',
+        transition: 'transform 0.3s ease',
+        cursor: 'default'
+      }}
+        onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-5px)'}
+        onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+      >
+        <div style={{
+          fontSize: '3rem',
+          marginBottom: '15px'
+        }}>
+          🕰️
+        </div>
+        <h3 style={{
+          fontSize: '1.8rem',
+          color: '#FFB6C1',
+          marginBottom: '10px',
+          fontWeight: 400,
+          fontFamily: "'Great Vibes', cursive"
+        }}>
+          A little note...
+        </h3>
+        <p style={{
+          fontSize: '1.1rem',
+          color: 'rgba(255, 255, 255, 0.7)',
+          lineHeight: 1.6,
+          marginBottom: '0'
+        }}>
+          I know the wishes are slightly late, but they were crafted with so much heart. <br />
+          <span style={{ color: '#FF69B4', fontWeight: 600 }}>Hope you can forgive me?</span>
+        </p>
 
-                <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-                <Sparkles count={100} scale={10} size={2} speed={0.4} opacity={0.5} color="#88ccff" />
-
-                <ApologyText />
-
-                {/* Floating Hearts */}
-                <FloatingHeart position={[-2, -1, 0]} color="#5d3fd3" scale={0.3} />
-                <FloatingHeart position={[2, 1, -1]} color="#4169e1" scale={0.4} />
-                <FloatingHeart position={[-3, 2, -2]} color="#00008b" scale={0.2} />
-                <FloatingHeart position={[3, -2, -1]} color="#1e90ff" scale={0.3} />
-            </Canvas>
-            <p className="scene-instruction" style={{ bottom: '20px' }}>
-                (Scroll back up to relive the memories)
-            </p>
-        </section>
-    );
+        {/* Visual indicator of CTA */}
+        <div style={{
+          marginTop: '25px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '10px',
+          color: 'rgba(255, 255, 255, 0.5)',
+          fontSize: '0.9rem',
+          textTransform: 'uppercase',
+          letterSpacing: '2px'
+        }}>
+          <div style={{ height: '1px', width: '30px', background: 'rgba(255, 255, 255, 0.2)' }}></div>
+          Scroll for the finale
+          <div style={{ height: '1px', width: '30px', background: 'rgba(255, 255, 255, 0.2)' }}></div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Scene4;
