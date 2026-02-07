@@ -107,23 +107,32 @@ const Scene7Content = ({ setHit, hit }) => {
 
             <StadiumScreen />
 
-            {/* SIXER Text Group - Always mounted, heavily optimized */}
-            <group position={[-5, 2, -2]} visible={hit}>
-                <Text fontSize={2.5} color="#D1AB3E" anchorX="center" anchorY="middle">SIXER!</Text>
-                <Sparkles count={hit ? 100 : 0} scale={15} size={8} speed={1} />
-            </group>
+            {/* SIXER & TROPHY Group - Visible on Hit */}
+            <group position={[-5, 1, -2]} visible={hit}>
+                {/* Text centered */}
+                <Text fontSize={2} color="#D1AB3E" anchorX="center" anchorY="middle" position={[0, 0, 0]}>SIXER!</Text>
 
-            {/* Optimized Floor - Replaced heavy Reflector with Standard Material to prevent crashes */}
-            <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -5.5, 0]}>
-                <planeGeometry args={[100, 100]} />
-                <meshStandardMaterial
-                    color="#000510"
-                    roughness={0.8}
-                    metalness={0.2}
-                    transparent
-                    opacity={0.9}
-                />
-            </mesh>
+                {/* 3D Gold Trophy Construction - Shifted DOWN below text */}
+                <group position={[0, -1.8, 0]} scale={0.8} rotation={[0.2, 0, 0]}>
+                    <Cylinder args={[0.3, 0.4, 0.1, 32]} position={[0, 0, 0]}>
+                        <meshStandardMaterial color="#FFD700" metalness={0.9} roughness={0.1} />
+                    </Cylinder>
+                    <Cylinder args={[0.1, 0.1, 0.6, 32]} position={[0, 0.35, 0]}>
+                        <meshStandardMaterial color="#FFD700" metalness={0.9} roughness={0.1} />
+                    </Cylinder>
+                    <Cylinder args={[0.5, 0.2, 0.7, 32]} position={[0, 1.0, 0]}>
+                        <meshStandardMaterial color="#FFD700" metalness={0.9} roughness={0.1} />
+                    </Cylinder>
+                    <Torus args={[0.25, 0.05, 16, 32]} position={[0.45, 1.0, 0]} rotation={[0, 0, 0]}>
+                        <meshStandardMaterial color="#FFD700" metalness={0.9} roughness={0.1} />
+                    </Torus>
+                    <Torus args={[0.25, 0.05, 16, 32]} position={[-0.45, 1.0, 0]} rotation={[0, 0, 0]}>
+                        <meshStandardMaterial color="#FFD700" metalness={0.9} roughness={0.1} />
+                    </Torus>
+                </group>
+
+                <Sparkles count={hit ? 150 : 0} scale={12} size={15} speed={0.6} color="#FFD700" />
+            </group>
         </>
     );
 };

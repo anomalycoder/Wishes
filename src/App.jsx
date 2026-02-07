@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, Suspense } from 'react';
-import { useProgress, Html } from '@react-three/drei';
+import { useProgress, Html, useGLTF } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
+import cakeUrl from './cake.glb?url';
 import Scene1 from './Scene1';
 import Scene5 from './Scene5';
 import Scene2 from './Scene2';
@@ -17,6 +18,10 @@ function LoadingScreen({ started, onStarted }) {
 
   // Preload handled implicitly by components mounting or useTexture/useGLTF elsewhere.
   // We rely on useProgress to track whatever is being requested.
+  // Explicit preload with resolved URL matches Scene3 usage exactly.
+  useEffect(() => {
+    useGLTF.preload(cakeUrl);
+  }, []);
 
   useEffect(() => {
     if (progress >= 100) setLoaded(true);

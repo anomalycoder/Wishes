@@ -4,9 +4,11 @@ import { useGLTF, Sparkles, Environment, Float, ContactShadows } from '@react-th
 import ConfettiExplosion from 'react-confetti-explosion';
 import gsap from 'gsap';
 
+import cakeUrl from './cake.glb?url'; // Use explicit relative import from same folder
+
 // --- Improved Cake Model with Rotation Logic ---
 function CakeModel({ cakeRef, isAutoRotate }) {
-  const { scene } = useGLTF('/cake.glb'); // Absolute path from public root
+  const { scene } = useGLTF(cakeUrl); // Use the resolved URL from import
 
   // Auto-rotation continues unless manually controlled
   useFrame((state, delta) => {
