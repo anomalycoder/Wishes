@@ -4,8 +4,8 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './', // Ensures relative paths work correctly on Vercel
+  // base: './', // Removed to fix local dev and Vercel usually handles auto-detection fine
   build: {
-    chunkSizeWarningLimit: 1000, // Increase warning limit for larger chunks
+    chunkSizeWarningLimit: 1000,
   }
 })

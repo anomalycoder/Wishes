@@ -117,11 +117,11 @@ const Scene7Content = ({ setHit, hit }) => {
             <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -5.5, 0]}>
                 <planeGeometry args={[100, 100]} />
                 <meshStandardMaterial
-                    color="#001529"
-                    roughness={0.2}
-                    metalness={0.8}
+                    color="#000510"
+                    roughness={0.8}
+                    metalness={0.2}
                     transparent
-                    opacity={0.8}
+                    opacity={0.9}
                 />
             </mesh>
         </>

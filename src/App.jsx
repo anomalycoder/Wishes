@@ -15,12 +15,8 @@ function LoadingScreen({ started, onStarted }) {
   const { progress } = useProgress();
   const [loaded, setLoaded] = useState(false);
 
-  // Preload assets logic could be here or separate, but useGLTF.preload handles it.
-  // We re-add explicit preload if needed, but useProgress tracks active requests.
-  // Let's add the preload back for safety.
-  useEffect(() => {
-    useGLTF.preload('/cake.glb');
-  }, []);
+  // Preload handled implicitly by components mounting or useTexture/useGLTF elsewhere.
+  // We rely on useProgress to track whatever is being requested.
 
   useEffect(() => {
     if (progress >= 100) setLoaded(true);
