@@ -107,19 +107,22 @@ const Scene7Content = ({ setHit, hit }) => {
 
             <StadiumScreen />
 
+            <group position={[-5, 2, -2]} visible={hit}>
+                <Text fontSize={2.5} color="#D1AB3E" anchorX="center" anchorY="middle">SIXER!</Text>
+                {hit && <Sparkles count={100} scale={15} size={8} speed={1} />}
+            </group>
+
+            {/* Optimized Floor - Replaced heavy Reflector with Standard Material to prevent crashes */}
             <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -5.5, 0]}>
                 <planeGeometry args={[100, 100]} />
-                <MeshReflectorMaterial
-                    blur={[300, 100]} resolution={512} mixBlur={1} mixStrength={60}
-                    roughness={1} depthScale={1.2} color="#001529" metalness={0.7}
-                    transparent opacity={0.25}
+                <meshStandardMaterial
+                    color="#001529"
+                    roughness={0.2}
+                    metalness={0.8}
+                    transparent
+                    opacity={0.8}
                 />
             </mesh>
-
-            <group position={[-5, 2, -2]} visible={hit}>
-                <Text fontSize={2.5} color="#D1AB3E" outlineWidth={0.05} outlineColor="#fff">SIXER!</Text>
-                {hit && <Sparkles count={200} scale={15} size={8} speed={1} />}
-            </group>
         </>
     );
 };
